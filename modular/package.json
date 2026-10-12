@@ -1,0 +1,17 @@
+{
+  "name": "silicon-sandwiches-modular",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kata Silicon Sandwiches com particionamento por domínio (estilo Modular Monolith). Só o checkout está implementado; os restantes módulos são mocks.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server.js",
+    "demo": "node --disable-warning=ExperimentalWarning scripts/demo.js",
+    "test": "node --disable-warning=ExperimentalWarning --test",
+    "check:arch": "node scripts/check-modules.js",
+    "reset:db": "node --disable-warning=ExperimentalWarning scripts/reset-db.js"
+  }
+}

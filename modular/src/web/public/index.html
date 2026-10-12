@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Silicon Sandwiches</title>
+  <link rel="stylesheet" href="/ui/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🥪</span>
+      <div>
+        <h1>Silicon Sandwiches</h1>
+        <p>Encomendas online · personalização por loja</p>
+      </div>
+    </div>
+    <span id="style-badge" class="badge">…</span>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <h2><span class="step">1</span> Escolher a loja</h2>
+      <div id="stores" class="stores"></div>
+
+      <h2><span class="step">2</span> Menu <span id="menu-store" class="muted"></span></h2>
+      <div id="menu" class="menu"><p class="muted">Escolha uma loja para ver o menu.</p></div>
+    </section>
+
+    <aside class="panel cart">
+      <h2><span class="step">3</span> A sua encomenda</h2>
+      <ul id="cart-lines" class="cart-lines"></ul>
+      <div class="cart-subtotal"><span>Subtotal estimado</span><strong id="cart-subtotal">0,00 €</strong></div>
+
+      <form id="checkout-form">
+        <label>Cliente
+          <input id="customer" value="ana" required>
+          <small>Use <code>sem-saldo</code> para simular um pagamento recusado.</small>
+        </label>
+
+        <div class="toggle" role="radiogroup" aria-label="Entrega">
+          <label><input type="radio" name="fulfilment" value="pickup" checked><span>🏪 Levantar na loja</span></label>
+          <label><input type="radio" name="fulfilment" value="delivery"><span>🛵 Entrega</span></label>
+        </div>
+
+        <label id="address-field" hidden>Morada
+          <input id="address" placeholder="Rua de Santa Catarina, 100">
+        </label>
+
+        <label>Código promocional
+          <input id="promo" placeholder="FCUL10" autocomplete="off">
+          <span id="promo-chips" class="promo-chips"></span>
+        </label>
+
+        <button id="submit" class="primary" type="submit" disabled>Finalizar encomenda</button>
+      </form>
+
+      <div id="result"></div>
+    </aside>
+  </main>
+
+  <section class="panel backstage">
+    <h2>Bastidores <span class="muted">o que aconteceu do lado do servidor</span></h2>
+    <div id="architecture" class="architecture"></div>
+    <div class="backstage-grid">
+      <div>
+        <h3>👩‍🍳 Cozinha <span class="tag">MakeOrder</span></h3>
+        <ul id="kitchen" class="feed"><li class="muted">Sem encomendas.</li></ul>
+      </div>
+      <div>
+        <h3>🛵 Entregas <span class="tag">Delivery</span></h3>
+        <ul id="deliveries" class="feed"><li class="muted">Sem entregas.</li></ul>
+      </div>
+      <div>
+        <h3>📦 Stock <span class="tag">ManageInventory</span> <span id="stock-store" class="muted"></span></h3>
+        <ul id="stock" class="stock"><li class="muted">Escolha uma loja.</li></ul>
+      </div>
+      <div>
+        <h3>🔌 Pedidos HTTP</h3>
+        <ul id="http-log" class="feed mono"></ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>Design de Software · FCUL · <a href="/routes">rotas da API</a></footer>
+
+  <script type="module" src="/ui/app.js"></script>
+</body>
+</html>

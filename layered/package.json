@@ -1,0 +1,17 @@
+{
+  "name": "silicon-sandwiches-layered",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kata Silicon Sandwiches com particionamento técnico (estilo Layered). Só o checkout está implementado; os restantes componentes são mocks.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server.js",
+    "demo": "node --disable-warning=ExperimentalWarning scripts/demo.js",
+    "test": "node --disable-warning=ExperimentalWarning --test",
+    "check:arch": "node scripts/check-layers.js",
+    "reset:db": "node --disable-warning=ExperimentalWarning scripts/reset-db.js"
+  }
+}
