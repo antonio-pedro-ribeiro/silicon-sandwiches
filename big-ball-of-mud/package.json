@@ -1,0 +1,17 @@
+{
+  "name": "silicon-sandwiches-big-ball-of-mud",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kata Silicon Sandwiches sem arquitetura (anti-padrão Big Ball of Mud): a aplicação inteira numa só classe.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/SiliconSandwiches.js",
+    "demo": "node --disable-warning=ExperimentalWarning src/SiliconSandwiches.js --demo",
+    "test": "node --disable-warning=ExperimentalWarning --test",
+    "check:arch": "node scripts/check-mud.js",
+    "reset:db": "node --disable-warning=ExperimentalWarning src/SiliconSandwiches.js --reset"
+  }
+}

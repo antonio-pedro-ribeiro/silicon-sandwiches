@@ -8,6 +8,7 @@ O mesmo sistema, a mesma funcionalidade e **os mesmos ficheiros**, organizados d
 |---|---|---|---|
 | `layered/` | Técnico: *presentation · business · persistence · database* | Layered | 3000 |
 | `modular/` | Por domínio: um módulo por componente do kata | Modular Monolith | 3001 |
+| `big-ball-of-mud/` | Nenhum: tudo numa só classe | Big Ball of Mud (anti-padrão) | 3002 |
 
 Todos os componentes do kata estão implementados, com base de dados SQL: *CatalogCheckout*, *Location*, *Promotion*, *ManageInventory*, *MakeOrder*, *Delivery* e *Recipes*. Só o **gateway de pagamento** continua simulado, porque representa um sistema externo (um banco), não um componente nosso.
 
@@ -18,7 +19,7 @@ Os preços, as lojas, os stocks, as taxas de entrega e os códigos promocionais 
 Node **22.13 ou superior**. Não há dependências: o servidor usa `node:http` e a base de dados usa `node:sqlite` (SQLite embutido no Node, ainda marcado como experimental). Não é preciso `npm install`.
 
 ```powershell
-cd layered        # ou: cd modular
+cd layered        # ou: cd modular, ou: cd big-ball-of-mud
 npm run demo        # 9 checkouts seguidos na consola (BD em memória, começa sempre do zero)
 npm test            # 9 testes
 npm run check:arch  # fitness functions das regras de dependência
@@ -26,7 +27,7 @@ npm run reset:db    # apaga encomendas, reservas, bilhetes…; mantém o catálo
 npm start           # servidor HTTP + interface web; a BD fica em data/silicon-sandwiches.db
 ```
 
-Depois do `npm start`, abrir **http://localhost:3000** (Layered) ou **http://localhost:3001** (Modular).
+Depois do `npm start`, abrir **http://localhost:3000** (Layered) **http://localhost:3001** (Modular) ou **http://localhost:3002** (Big Ball of Mud).
 
 Para apagar as encomendas (e tudo o que os checkouts criaram) mantendo o catálogo, parar o servidor e correr `npm run reset:db`: o stock reservado volta às lojas e a numeração recomeça em 1. Para voltar aos dados de exemplo, apagar a pasta `data/`. Se o esquema mudar (constante `SCHEMA_VERSION` em `db.js`), uma base de dados antiga é recriada automaticamente.
 
@@ -100,6 +101,32 @@ A personalização por loja aparece em vários componentes:
 Isto ilustra a desvantagem do corte por domínio que o livro refere: o código de personalização **aparece em vários sítios**.
 
 Nota: o slide 7 usa o corte técnico clássico (camadas). A Fig. 9-6 do livro mostra outra variante técnica, com *Common* e *Local* como componentes de topo; não está implementada aqui.
+
+## Terceira variante: Big Ball of Mud (`big-ball-of-mud/`)
+
+A mesma aplicação **sem arquitetura**. Faz exatamente o mesmo (mesmas rotas, mesmas respostas, mesma interface, mesmos dados) e passa nos **mesmos 9 testes**: o ficheiro de testes só difere na linha do `import`. Mas está tudo num só ficheiro, numa só classe: `src/SiliconSandwiches.js` (cerca de 1000 linhas).
+
+```text
+big-ball-of-mud/
+├─ src/SiliconSandwiches.js   ← servidor, router, HTML, CSS, JS do browser, negócio, SQL, esquema, dados, demo, reset
+├─ scripts/check-mud.js       ← "fitness function" que só pode falhar
+└─ test/checkout.test.js      ← os mesmos testes das outras versões
+```
+
+Os anti-padrões estão assinalados no código com comentários `LAMA:`. Os principais:
+
+- **A interface vai diretamente à base de dados.** `renderPage()` monta o HTML em strings com os `SELECT` lá dentro: as lojas, os códigos promocionais, a cozinha e as entregas chegam à página já preenchidos, sem passar por nenhum serviço.
+- **O código do browser vive na mesma classe que o SQL.** `SiliconSandwiches.browser` é uma função enviada ao browser com `Function.prototype.toString`, e volta a desenhar a cozinha e as entregas de outra maneira (duplicação).
+- **Regras de negócio duplicadas.** O preço com personalização local está escrito em SQL em `menu()` e outra vez em JavaScript em `doCheckout()`. Se uma mudar e a outra não, o menu mostra um preço e o checkout cobra outro.
+- **Sem fronteiras entre componentes.** `doCheckout()` faz o trabalho dos sete componentes num só método. A cozinha não tem tabela própria de artigos: lê `order_line`, a tabela do checkout. Encomenda, código, bilhete e entrega gravam-se numa só transação, o que é cómodo hoje e impede separá-los amanhã.
+- **HTTP misturado com negócio.** As regras lançam erros com `status: 422` e `status: 404`; não há uma camada que traduza.
+- **SQL por concatenação**, com aspas escapadas à mão (`q()`), ao lado de consultas parametrizadas: duas formas de fazer o mesmo.
+- **Copiar e colar** (o "upsert" de stock aparece três vezes), um `switch` para a máquina de estados, uma lista de rotas escrita à mão, uma cache global sem invalidação.
+- **Um ficheiro que é biblioteca e programa ao mesmo tempo:** `npm start`, `npm run demo` e `npm run reset:db` correm todos a mesma classe, com `--demo` e `--reset`.
+
+`npm run check:arch` não tem camadas nem módulos para verificar: conta as responsabilidades que vivem no mesmo ficheiro (HTTP, HTML, CSS, DOM, negócio, SQL, dados, linha de comandos) e **falha**.
+
+O ponto para a aula: funcionar não chega. Perguntar aos alunos onde mexer para fazer os exercícios abaixo nesta versão. A resposta é sempre a mesma (o ficheiro todo), e não há nenhuma regra automática que impeça a próxima mudança de piorar as coisas.
 
 ## O fluxo do checkout
 
@@ -191,6 +218,8 @@ import { createOrderRepository } from '../persistence/orderRepository.js';
 ```
 
 ou, em `modular/src/modules/delivery/business/deliveryService.js`, uma consulta `SELECT * FROM checkout_customer_order`.
+
+- **Big Ball of Mud** (`check-mud.js`): não há regras de dependência para verificar; o script mede a mistura de responsabilidades e falha sempre.
 
 ## Exercícios para a aula
 
