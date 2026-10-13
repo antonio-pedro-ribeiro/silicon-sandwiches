@@ -2,10 +2,10 @@
 
 # Silicon Sandwiches · Layered · diagramas de arquitetura
 
-Apoio à [[Aula 5 Script|Aula 5]] ([[DS - Aula 5 - Estilos Arquiteturais (Cap. 9-11).pptx]]). Quatro vistas do código em `layered/`, na mesma ordem e com as mesmas cores de [[Arquitetura - Modular]], para as mostrar lado a lado.
+Quatro vistas do código em `layered/`, na mesma ordem e com as mesmas cores de [Arquitetura - Modular](../../modular/spec/Arquitetura%20-%20Modular.md), para as comparar lado a lado.
 
 - **Mermaid** (esta nota): vê-se diretamente no Obsidian, no GitHub e no VS Code.
-- **draw.io**: `Arquitetura - Layered.drawio`, nesta pasta, com as mesmas quatro vistas em quatro páginas. É a versão para ajustar e copiar para os slides.
+- **draw.io**: `Arquitetura - Layered.drawio`, nesta pasta, com as mesmas quatro vistas em quatro páginas. É a versão para editar.
 
 **Cor = componente do kata**, igual nas duas versões:
 
