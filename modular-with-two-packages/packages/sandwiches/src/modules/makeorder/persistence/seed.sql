@@ -1,0 +1,1 @@
+-- Sem dados de exemplo: os bilhetes nascem das encomendas.

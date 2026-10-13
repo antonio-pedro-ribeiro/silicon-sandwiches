@@ -1,0 +1,19 @@
+{
+  "name": "silicon-sandwiches-modular-deployment",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kata Silicon Sandwiches em dois pacotes de deployment (packages/sandwiches e packages/delivery). Esta raiz não é implantada: só junta os scripts de desenvolvimento.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node scripts/start-all.js",
+    "start:sandwiches": "npm start --prefix packages/sandwiches",
+    "start:delivery": "npm start --prefix packages/delivery",
+    "demo": "node --disable-warning=ExperimentalWarning scripts/demo.js",
+    "test": "npm test --prefix packages/delivery && npm test --prefix packages/sandwiches && node --disable-warning=ExperimentalWarning --test test/system.test.js",
+    "check:arch": "node scripts/check-deployments.js && npm run check:arch --prefix packages/sandwiches",
+    "reset:db": "npm run reset:db --prefix packages/sandwiches && npm run reset:db --prefix packages/delivery"
+  }
+}

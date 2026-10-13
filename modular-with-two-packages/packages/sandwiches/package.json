@@ -1,0 +1,16 @@
+{
+  "name": "silicon-sandwiches-sandwiches",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pacote de deployment 1 de 2: todos os módulos menos o Delivery, mais a interface web. Fala com o Delivery por HTTP.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server.js",
+    "test": "node --disable-warning=ExperimentalWarning --test \"test/**/*.test.js\"",
+    "check:arch": "node scripts/check-modules.js",
+    "reset:db": "node --disable-warning=ExperimentalWarning scripts/reset-db.js"
+  }
+}
