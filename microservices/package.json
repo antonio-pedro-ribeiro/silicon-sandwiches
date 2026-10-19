@@ -1,0 +1,17 @@
+{
+  "name": "silicon-sandwiches-microservices",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kata Silicon Sandwiches no estilo Microservices: sete serviços, um por componente do kata, cada um com a sua base de dados, atrás de um API gateway. Esta raiz não é implantada: só junta os scripts de desenvolvimento.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node scripts/start-all.js",
+    "demo": "node --disable-warning=ExperimentalWarning scripts/demo.js",
+    "test": "node --disable-warning=ExperimentalWarning --test",
+    "check:arch": "node scripts/check-architecture.js",
+    "reset:db": "node --disable-warning=ExperimentalWarning scripts/reset-db.js"
+  }
+}

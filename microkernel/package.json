@@ -1,0 +1,17 @@
+{
+  "name": "silicon-sandwiches-microkernel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kata Silicon Sandwiches no estilo Microkernel: um núcleo (o caminho feliz) e plug-ins para a personalização de cada loja e para cada código promocional.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server.js",
+    "demo": "node --disable-warning=ExperimentalWarning scripts/demo.js",
+    "test": "node --disable-warning=ExperimentalWarning --test",
+    "check:arch": "node --disable-warning=ExperimentalWarning scripts/check-microkernel.js",
+    "reset:db": "node --disable-warning=ExperimentalWarning scripts/reset-db.js"
+  }
+}

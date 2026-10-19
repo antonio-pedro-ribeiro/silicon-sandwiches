@@ -1,0 +1,18 @@
+{
+  "name": "silicon-sandwiches-service-based",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kata Silicon Sandwiches no estilo Service-Based: quatro serviços de domínio de grão grosso, uma interface/API gateway e uma base de dados partilhada com partições lógicas. Esta raiz não é implantada: só junta os scripts de desenvolvimento.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning scripts/start-all.js",
+    "demo": "node --disable-warning=ExperimentalWarning scripts/demo.js",
+    "test": "node --disable-warning=ExperimentalWarning --test",
+    "check:arch": "node scripts/check-architecture.js",
+    "setup:db": "node --disable-warning=ExperimentalWarning scripts/setup-db.js",
+    "reset:db": "node --disable-warning=ExperimentalWarning scripts/reset-db.js"
+  }
+}

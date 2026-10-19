@@ -1,6 +1,6 @@
 # Silicon Sandwiches · histórias de utilizador
 
-Histórias extraídas do código. As quatro versões (`layered/`, `modular/`, `modular-with-two-packages/` e `big-ball-of-mud/`) implementam as mesmas histórias e passam nos mesmos testes. Os critérios de aceitação vêm das regras de negócio e dos dados de exemplo.
+Histórias extraídas do código. As sete versões (`layered/`, `modular/`, `modular-with-two-packages/`, `big-ball-of-mud/`, `microkernel/`, `service-based/` e `microservices/`) implementam as mesmas histórias e passam nos mesmos testes. Os critérios de aceitação vêm das regras de negócio e dos dados de exemplo.
 
 **Atores**
 

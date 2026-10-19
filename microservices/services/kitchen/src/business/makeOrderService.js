@@ -1,0 +1,24 @@
+// Kitchen (MakeOrder): um bilhete de cozinha por encomenda, que avança QUEUED → PREPARING → READY → COLLECTED.
+import { NotFoundError, ValidationError } from '../../../../platform/errors.js';
+
+const NEXT = { QUEUED: 'PREPARING', PREPARING: 'READY', READY: 'COLLECTED' };
+
+export function createMakeOrderService({ kitchenRepository }) {
+  return {
+    // Reação ao evento OrderPlaced. O mesmo evento pode chegar mais de uma vez: um só bilhete por encomenda.
+    async enqueue({ orderId, storeId, items }) {
+      return kitchenRepository.findByOrder(orderId) ?? kitchenRepository.create({ orderId, storeId, items });
+    },
+    async getQueue(storeId) {
+      return kitchenRepository.findAll(storeId);
+    },
+    async advance(ticketId) {
+      const ticket = kitchenRepository.findById(ticketId);
+      if (!ticket) throw new NotFoundError(`Bilhete ${ticketId} não existe`);
+      const next = NEXT[ticket.status];
+      if (!next) throw new ValidationError(`O bilhete ${ticketId} já foi levantado`);
+      kitchenRepository.setStatus(ticketId, next);
+      return kitchenRepository.findById(ticketId);
+    },
+  };
+}

@@ -1,0 +1,13 @@
+{
+  "name": "silicon-sandwiches-service-delivery",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serviço de domínio Delivery. Implantado à parte; usa a base de dados partilhada.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server.js"
+  }
+}
