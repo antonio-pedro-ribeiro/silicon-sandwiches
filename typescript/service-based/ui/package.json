@@ -1,0 +1,13 @@
+{
+  "name": "silicon-sandwiches-service-based-ui",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interface web e API gateway do Silicon Sandwiches (Service-Based). Implantada à parte; não acede à base de dados.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/server.ts"
+  }
+}

@@ -1,0 +1,1 @@
+-- Sem dados de exemplo: as entregas nascem das encomendas e as taxas estão nos plug-ins das lojas.

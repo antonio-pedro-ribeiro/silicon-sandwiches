@@ -1,0 +1,1 @@
+-- Sem dados de exemplo: os códigos promocionais são plug-ins (src/plugins/promotion/).

@@ -1,0 +1,15 @@
+{
+  "name": "silicon-sandwiches-delivery",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pacote de deployment 2 de 2: o módulo Delivery como serviço separado, com a sua própria base de dados.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/server.ts",
+    "test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test \"test/**/*.test.ts\"",
+    "reset:db": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/reset-db.ts"
+  }
+}

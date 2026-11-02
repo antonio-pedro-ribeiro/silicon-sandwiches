@@ -1,0 +1,22 @@
+{
+  "name": "silicon-sandwiches-microkernel-ts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kata Silicon Sandwiches no estilo Microkernel: um núcleo (o caminho feliz) e plug-ins para a personalização de cada loja e para cada código promocional. Versão em TypeScript.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/server.ts",
+    "demo": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/demo.ts",
+    "test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test",
+    "check:arch": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/check-microkernel.ts",
+    "reset:db": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/reset-db.ts",
+    "typecheck": "tsc -p ."
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "typescript": "^5.9.3"
+  }
+}

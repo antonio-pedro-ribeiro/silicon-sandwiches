@@ -1,0 +1,22 @@
+{
+  "name": "silicon-sandwiches-big-ball-of-mud-ts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kata Silicon Sandwiches sem arquitetura (anti-padrão Big Ball of Mud): a aplicação inteira numa só classe. Versão em TypeScript.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/SiliconSandwiches.ts",
+    "demo": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/SiliconSandwiches.ts --demo",
+    "test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test",
+    "check:arch": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/check-mud.ts",
+    "reset:db": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/SiliconSandwiches.ts --reset",
+    "typecheck": "tsc -p ."
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "typescript": "^5.9.3"
+  }
+}

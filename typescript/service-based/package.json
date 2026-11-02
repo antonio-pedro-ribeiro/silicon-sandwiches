@@ -1,0 +1,23 @@
+{
+  "name": "silicon-sandwiches-service-based-ts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kata Silicon Sandwiches no estilo Service-Based: quatro serviços de domínio de grão grosso, uma interface/API gateway e uma base de dados partilhada com partições lógicas. Esta raiz não é implantada: só junta os scripts de desenvolvimento. Versão em TypeScript.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/start-all.ts",
+    "demo": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/demo.ts",
+    "test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test",
+    "check:arch": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/check-architecture.ts",
+    "setup:db": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/setup-db.ts",
+    "reset:db": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/reset-db.ts",
+    "typecheck": "tsc -p ."
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "typescript": "^5.9.3"
+  }
+}
