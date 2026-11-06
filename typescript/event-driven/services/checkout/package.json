@@ -1,0 +1,13 @@
+{
+  "name": "silicon-sandwiches-ms-checkout",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Microsserviço Checkout (CatalogCheckout), com a sua própria base de dados. Implantado à parte.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/server.ts"
+  }
+}

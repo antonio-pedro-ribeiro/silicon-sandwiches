@@ -11,6 +11,7 @@ Os mesmos sete exemplos de [`../js/`](../js/), com a mesma funcionalidade, os me
 | `microkernel/` | Microkernel | 3005 |
 | `service-based/` | Service-Based | 3100 · 3101–3111 |
 | `microservices/` | Microservices | 3200 · 3201–3207 |
+| `event-driven/` | Event-Driven Architecture (RabbitMQ) | 3300 · 3301–3307 |
 
 ## Arranque
 

@@ -1,0 +1,24 @@
+{
+  "name": "silicon-sandwiches-event-driven-ts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kata Silicon Sandwiches no estilo Event-Driven Architecture: sete microsserviços com bases de dados independentes, integrados via broker AMQP RabbitMQ (com outbox transacional no Checkout e filas duráveis para Kitchen, Delivery e Promotion) e um API gateway na porta 3300. Versão em TypeScript.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/start-all.ts",
+    "demo": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/demo.ts",
+    "test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test",
+    "check:arch": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/check-architecture.ts",
+    "reset:db": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/reset-db.ts",
+    "typecheck": "tsc -p .",
+    "rabbit:up": "docker compose up -d",
+    "rabbit:down": "docker compose down"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "typescript": "^5.9.3"
+  }
+}

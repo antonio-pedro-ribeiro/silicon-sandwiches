@@ -1,0 +1,10 @@
+{
+  "gateway": 3300,
+  "checkout": 3301,
+  "location": 3302,
+  "promotion": 3303,
+  "inventory": 3304,
+  "recipes": 3305,
+  "kitchen": 3306,
+  "delivery": 3307
+}
